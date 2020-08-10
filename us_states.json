@@ -1,0 +1,18 @@
+{
+	"states": [{
+			"name": "Alabama",
+			"abbrv": "AL",
+			"area_codes": ["205", "251", "256", "334"]
+		},
+		{
+			"name": "Alaska",
+			"abbrv": "AK",
+			"area_codes": ["907"]
+		},
+		{
+			"name": "Arizona",
+			"abbrv": "AZ",
+			"area_codes": ["480", "520"]
+		}
+	]
+}

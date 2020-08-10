@@ -1,0 +1,92 @@
+===============================
+Demonstrating usage of doctest
+===============================
+# Tests are written in the form of documentation in a text file.
+# The file contains text documentation and two tests written 
+# for testing python's plus operator.
+
+# Presence of a blank line or a new line starting with 
+# primary prompt after the expected output is seen as 
+# end of the existing test. (like after 6 and after -2.5)
+
+1. This doctest checks functionality of  python's plus operator.
+
+>>> 2 + 4
+6
+>>> -10.5 + 8
+-2.5
+
+
+# The example shows how a function definition spanning 
+# multiple lines is defined using main and secondary prompt
+
+2. The below doctest checks functionality of add2num function
+
+>>> def add2num(x, y):
+...       "This function returns sum of two numbers."
+...       return x + y
+>>> add2num(6, 7)
+13
+>>> add2num(-8.5, 7)
+-1.5
+
+# TESTS RUN USING FOLLOWING COMMAND
+# python3 ‑m doctest sample_tests.txt  (no o/p if success)
+# python3 ‑m doctest -v sample_tests.txt (verbose o/p)
+
+# tests of function add2num are written as a part of docstring,
+# in the script itself (i.e. in .py file, not .txt)
+# say in sample_files.py
+# The docstring contains two tests corresponding to add2num func
+# Though written in docstring, it not evaluated on running the module/function
+# Need to use doctest to run test cases written in docstring
+
+3. The below doctest checks functionality of add2num function
+def add2num(x, y):
+    """Adds two given numbers and returns the sum.
+    >>> add2num(6, 7)
+    13
+    >>> add2num(-8.5, 7)
+    -1.5
+    """
+    return x + y
+    
+# RUN TESTS IN DOCSTRING using 
+# python3 ‑m doctest sample_module.py
+
+##########################################
+# Raising exceptions 
+# doctest can detect raised exceptions by reading the python 
+# exception report and traceback displayed in a python shell 
+
+# doctest concerned only with the 
+# first line Traceback (most recent call last): and 
+# the last line, which tells it which exception you expect.
+
+def add2num(x, y):
+    """Adds two given numbers and returns the sum.
+    >>> add2num(6, 7)
+    13
+    >>> add2num(-8.5, 7)
+    -1.5
+    >>> add2num(8, 'hello')
+    Traceback (most recent call last):
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
+    """
+    return x + y
+
+# In above example, all tests will pass. Coz ValueError is actually thrown
+# Replace TypeError with ValueError, and 3rd test will fail
+
+# If you expect a blank line in the output, use <BLANKLINE>
+3. This doctest checks functionality of insertlines function
+>>> def insertlines(n):
+...    print('Start')
+...    for i in range(n):
+...        print()
+...    print('End')
+>>> insertlines(2)
+Start
+<BLANKLINE>
+<BLANKLINE>
+End

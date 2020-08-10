@@ -1,0 +1,23 @@
+Generally, a large code base project contains multiple modules and hence requires multiple test modules.
+
+It is always good to keep all test modules as a unit and separate it from development code.
+
+A Test package is nothing but a python package containing all test modules in it.
+##################################################
+Create a test package by following the below steps.
+
+Create a folder named Project1.
+Create a subfolder named test in Project1.
+Create a file named __init__.py in Project1/test folder.
+Move the file test_module1.py into Project1/test folder.
+Add the expression into all = ['test_module1'] into __init__.py file and save it.
+The folder test now acts like a test package. You can also add any number of test modules to test directory.
+
+##################################################
+
+Once the test package is created, run tests present in
+test_module1.py file with below command from Project1 folder.
+
+python -m unittest test.test_module1
+<command throws syntax error. so, something is incorrect>
+##################################################
