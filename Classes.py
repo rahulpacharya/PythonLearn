@@ -201,17 +201,22 @@ print(square(10))
 ## and uses it.
 class Circle(object):
     def __init__(self, radius):
-        self.__radius = radius
+        self.radius = radius
     @staticmethod
     def square(x):
         return x**2
     def area(self):
-        return 3.14*self.square(self.__radius)
+        return 3.14*self.square(self.radius)
+    # can define to add anything really
+    def __add__(self,other):
+        return self.radius + other.radius
 c1 = Circle(3.9)
+c2 = Circle(3.1)
 print(c1.area())  
 # print(square(10)) # -> NameError
 print(Circle.square(10))
 print(c1.square(10))
+print("Result of add is: ",c1+c2)
 #################################################
 #################################################
 ## ABSTRACT BASE CLASS (ABC)
@@ -390,8 +395,10 @@ class Point():
         self.y = y
         self.z = z
     def __str__(self):
-        abc="Point : ({}, {}, {})"
-        return (abc.format(self.x,self.y,self.z))
+        return ("Point : ({}, {}, {})".format(self.x,self.y,self.z))
+    #Runs like a repair method for debugging. Like when Str not found or if called explicitly
+    def __repr__(self):
+        return ("Point ({}, {}, {})".format(self.x,self.y,self.z))
     def distance(p1,p2):
         dist = math.sqrt( (p1.x-p2.x)**2 + (p1.y-p2.y)**2 + (p1.z-p2.z)**2 )
         return dist
